@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zona de Amarristas — Bitácora Digital | Marina Cirse</title>
+<meta name="description" content="Bitácora digital de entrada y salida para amarristas de Marina Cirse. Sin usuario, sin contraseña, con registro formal por fecha, hora, firma y patente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Work+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --marina:#12333D; --marina-osc:#0A2028; --grafito:#2A3438; --agua:#2E8FA3;
+  --arena:#EFE9DE; --arena-osc:#D9CFBE; --destello:#E8A33D;
+  --carbon:#161B1E; --blanco:#FCFBF8;
+  --display:'Fraunces',serif; --texto:'Work Sans',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --radio:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--texto);color:var(--carbon);background:var(--blanco);line-height:1.55}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.15}
+.container{width:min(1000px,92%);margin-inline:auto}
+section{padding:3.6rem 0}
+@media(max-width:720px){section{padding:2.6rem 0}}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--agua);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--agua)}
+.titulo{font-size:clamp(1.5rem,3.2vw,1.9rem);color:var(--marina-osc);margin-bottom:.4rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-weight:600;font-size:.92rem;padding:.95rem 1.7rem;border-radius:3px;border:1.5px solid transparent;cursor:pointer;transition:.25s;font-family:var(--texto)}
+.btn-primario{background:var(--destello);color:var(--marina-osc)}
+.btn-primario:hover{background:#f2b558;transform:translateY(-2px)}
+
+.topbar{background:var(--marina-osc);padding:1rem 0}
+.topbar .container{display:flex;align-items:center;justify-content:space-between}
+.topbar .volver{font-size:.86rem;color:rgba(252,251,248,.75);transition:.2s}
+.topbar .volver:hover{color:var(--destello)}
+.topbar .marca{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--blanco)}
+.topbar .marca span{color:var(--destello)}
+
+.za-hero{background:linear-gradient(165deg,var(--marina) 0%,var(--marina-osc) 100%);color:var(--blanco);padding:4.2rem 0 3.4rem}
+.za-hero .eyebrow{color:var(--destello)}
+.za-hero .eyebrow::before{background:var(--destello)}
+.za-hero h1{font-size:clamp(1.9rem,4.2vw,2.8rem);max-width:20ch;margin-bottom:1rem}
+.za-hero p{max-width:58ch;color:rgba(252,251,248,.84);font-size:1.02rem}
+
+.za-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:1.6rem}
+@media(max-width:820px){.za-pasos{grid-template-columns:1fr}}
+.za-paso .num{font-family:var(--mono);font-size:.78rem;color:var(--destello);letter-spacing:.1em}
+.za-paso h3{font-size:1.16rem;color:var(--marina-osc);margin:.45rem 0 .3rem}
+.za-paso p{font-size:.9rem;color:#59635f}
+
+.za-vivo-wrap{background:var(--arena)}
+.za-vivo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.6rem}
+@media(max-width:820px){.za-vivo-grid{grid-template-columns:1fr}}
+.za-bloque{background:var(--blanco);border:1px solid var(--arena-osc);border-radius:var(--radio);padding:1.4rem}
+.za-bloque h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--agua);margin-bottom:.9rem}
+.za-iframe{width:100%;height:60px;border:none;background:transparent;display:block}
+.za-clima{display:flex;align-items:center;gap:.9rem;min-height:44px}
+.za-clima .icono{font-size:2.1rem;line-height:1}
+.za-clima .temp{font-family:var(--display);font-size:1.7rem;font-weight:600;color:var(--marina-osc);line-height:1.1}
+.za-clima .detalle{font-size:.78rem;color:#59635f}
+.za-promo{font-size:.9rem;color:#59635f;font-style:italic;margin:0}
+
+.za-beneficios{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:1.6rem}
+@media(max-width:720px){.za-beneficios{grid-template-columns:1fr}}
+.za-beneficio{border-top:1px solid var(--arena-osc);padding-top:1.1rem}
+.za-beneficio h4{font-size:1.04rem;color:var(--marina-osc);margin-bottom:.35rem}
+.za-beneficio p{font-size:.9rem;color:#59635f}
+
+.za-legal{background:var(--grafito);color:var(--blanco)}
+.za-legal .eyebrow{color:var(--destello)}
+.za-legal .eyebrow::before{background:var(--destello)}
+.za-legal h2{color:var(--blanco)}
+.za-legal p{color:rgba(252,251,248,.78);font-size:.95rem;max-width:64ch}
+
+.za-cta{text-align:center;padding:3.4rem 0}
+
+footer{background:var(--carbon);color:rgba(252,251,248,.6);padding:2.2rem 0;font-size:.84rem;text-align:center}
+footer a:hover{color:var(--destello)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <a href="marina.html" class="marca">Cirse <span>Marina</span></a>
+    <a href="marina.html" class="volver">← Volver al sitio</a>
+  </div>
+</div>
+
+<section class="za-hero">
+  <div class="container">
+    <div class="eyebrow">Servicio digital · solo para amarristas</div>
+    <h1>Hacé vos mismo la entrada y salida de tu amarre.</h1>
+    <p>Pedí tu link personal — sin usuario, sin contraseña. Un toque y quedás registrado: mayor seguridad para vos y para el club, sin cuadernos ni handy.</p>
+    <a href="https://script.google.com/macros/s/AKfycbyrcUp36hbKXs5n-HWTkvWUvM4oMZskD1pwEV8OLrkyAgvvLHYjYNS8NSk-AVMM6nbJ/exec?id=fede-test" target="_blank" rel="noopener" class="btn btn-primario" style="margin-top:1.7rem">Probar la bitácora ahora →</a>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Cómo funciona</div>
+    <h2 class="titulo">Tres pasos, cinco segundos</h2>
+    <div class="za-pasos">
+      <div class="za-paso"><span class="num">01</span><h3>Escaneá tu QR</h3><p>Está pegado en tu amarre, o guardalo en el celular y usalo siempre desde ahí.</p></div>
+      <div class="za-paso"><span class="num">02</span><h3>Confirmá tu nombre y patente</h3><p>Un toque y queda registrado con hora exacta — tu firma y la de tu embarcación, no la de cualquiera.</p></div>
+      <div class="za-paso"><span class="num">03</span><h3>Listo</h3><p>El club sabe que estás en el agua. Si te equivocaste, tenés 90 segundos para deshacerlo vos mismo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="za-vivo-wrap">
+  <div class="container">
+    <div class="eyebrow">En este momento</div>
+    <h2 class="titulo">El muelle, en vivo</h2>
+    <div class="za-vivo-grid">
+      <div class="za-bloque">
+        <h4>Estado del muelle</h4>
+        <iframe class="za-iframe" src="https://script.google.com/macros/s/AKfycbyrcUp36hbKXs5n-HWTkvWUvM4oMZskD1pwEV8OLrkyAgvvLHYjYNS8NSk-AVMM6nbJ/exec?resumen=1" title="Embarcaciones en el agua ahora" loading="lazy"></iframe>
+      </div>
+      <div class="za-bloque">
+        <h4>Clima en el lago</h4>
+        <div class="za-clima" id="zaClima">Cargando…</div>
+      </div>
+      <div class="za-bloque">
+        <h4>Promoción para amarristas</h4>
+        <p class="za-promo">A confirmar con el equipo de Marina Cirse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Por qué existe</div>
+    <h2 class="titulo">Lo que te resuelve</h2>
+    <div class="za-beneficios">
+      <div class="za-beneficio"><h4>Sin vueltas</h4><p>Nada de cuadernos en la oficina ni avisar por handy. Un toque, listo.</p></div>
+      <div class="za-beneficio"><h4>Te cubre a vos también</h4><p>Si hay una consulta sobre horarios, tu entrada y salida ya están documentadas — no es tu palabra contra la de nadie.</p></div>
+      <div class="za-beneficio"><h4>El club reacciona más rápido</h4><p>Si el clima cambia de golpe, se sabe al instante quién sigue en el agua.</p></div>
+      <div class="za-beneficio"><h4>Registro formal, no una anotación suelta</h4><p>Fecha, hora, tu firma y la patente de la embarcación — el mismo criterio que pediría cualquier autoridad náutica.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="za-legal">
+  <div class="container">
+    <div class="eyebrow">Formalidad</div>
+    <h2>Un registro que sirve si hace falta</h2>
+    <p>Cada movimiento queda con fecha, hora, amarrista, patente y firma digital. Si en algún momento se necesita información sobre una embarcación, Cirse tiene la respuesta a mano — no hay que reconstruir nada de memoria.</p>
+  </div>
+</section>
+
+<div class="za-cta">
+  <a href="https://script.google.com/macros/s/AKfycbyrcUp36hbKXs5n-HWTkvWUvM4oMZskD1pwEV8OLrkyAgvvLHYjYNS8NSk-AVMM6nbJ/exec?id=fede-test" target="_blank" rel="noopener" class="btn btn-primario">Probar la bitácora ahora →</a>
+</div>
+
+<footer>
+  <div class="container">
+    © <span id="anio"></span> Cirse Club de Lago — Marina · <a href="marina.html">Volver al sitio</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('anio').textContent = new Date().getFullYear();
+
+(function(){
+  const el = document.getElementById('zaClima');
+  if(!el) return;
+  const DIRS = ['N','NE','E','SE','S','SO','O','NO'];
+  function icono(code){
+    if(code===0) return '☀️';
+    if([1,2].includes(code)) return '🌤️';
+    if(code===3) return '☁️';
+    if([45,48].includes(code)) return '🌫️';
+    if([51,53,55,56,57,80,81,82].includes(code)) return '🌦️';
+    if([61,63,65,66,67].includes(code)) return '🌧️';
+    if([71,73,75,77,85,86].includes(code)) return '❄️';
+    if([95,96,99].includes(code)) return '⛈️';
+    return '🌡️';
+  }
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=-41.093&longitude=-71.455&current=temperature_2m,wind_speed_10m,wind_direction_10m,weather_code&timezone=America%2FArgentina%2FBuenos_Aires')
+    .then(r=> r.json())
+    .then(d=>{
+      const c = d.current;
+      const dir = DIRS[Math.round(c.wind_direction_10m / 45) % 8];
+      el.innerHTML = '<span class="icono">' + icono(c.weather_code) + '</span>' +
+        '<div><span class="temp">' + Math.round(c.temperature_2m) + '°</span><br>' +
+        '<span class="detalle">Viento ' + Math.round(c.wind_speed_10m) + ' km/h ' + dir + '</span></div>';
+    })
+    .catch(()=> el.textContent = 'No se pudo cargar el clima ahora.');
+})();
+</script>
+</body>
+</html>
